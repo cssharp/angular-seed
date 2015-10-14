@@ -13,7 +13,10 @@ config(['$routeProvider', function($routeProvider) {
             templateUrl: 'partials/view1.html',
             controller: 'View1Ctrl'}).
           when("/view2",{
-            templateUrl: 'partials/view2.html',
-            controller: 'View2Ctrl'})
+              templateUrl: 'partials/view2.html',
+              controller: 'View2Ctrl'}).
+          when("/flickr",{
+              templateUrl: 'partials/flickr.html',
+              controller: 'flickrCtrl'})
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);

@@ -28,3 +28,20 @@ phonecatServices.factory('tianqi', ['$http','$q',
 
     return tianqi;
   }]);
+
+phonecatServices.factory("flickr",["$q","$http",
+  function($q,$http){
+    var flickr = {};
+    flickr.get = function(key){
+      var defered = $q.defer();
+      $http.jsonp("https://api.flickr.com/services/feeds/photos_public.gne?tags=car&tagmode=any&format=json&jsoncallback=JSON_CALLBACK")
+          .success(function(data){
+            defered.resolve(data);
+          })
+          .error(function(){
+            defered.reject("error");
+          });
+      return defered.promise;
+    }
+    return flickr;
+}]);
