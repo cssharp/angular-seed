@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var phonecatControllers = angular.module('myApp.Controllers', []);
+var phonecatControllers = angular.module('myApp.Controllers', ['myApp.Services']);
 
 phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
   function($scope, Phone) {
@@ -21,8 +21,10 @@ phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Ph
     };
   }]);
 
-phonecatControllers.controller('View1Ctrl', [function() {
-
+phonecatControllers.controller('View1Ctrl', ['$scope','tianqi',function($scope,tianqi) {
+  tianqi.get().then(function(data){
+    $scope.result = data;
+  });
 }]);
 
 phonecatControllers.controller('View2Ctrl', [function() {
